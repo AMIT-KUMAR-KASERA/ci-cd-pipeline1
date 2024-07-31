@@ -24,7 +24,7 @@ environment {
  stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t amitkasera2001/ci-cd-pipeline-sample .'
+                    sh 'docker build -t amitkasera2001/ci-cd-pipeline2 .'
                 }
             }
         }
