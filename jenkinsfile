@@ -31,7 +31,7 @@ environment {
 stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'Dockerhub') {
                         sh 'docker push amitkasera2001/ci-cd-pipeline-sample'
                     }
                 }
