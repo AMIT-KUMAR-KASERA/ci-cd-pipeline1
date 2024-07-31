@@ -36,6 +36,7 @@ stage('Push Docker Image') {
                     }
                 }
             }
+}
         stage('Run') {
             steps {
                 sh 'node index.js'
