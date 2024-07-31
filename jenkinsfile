@@ -2,14 +2,11 @@ pipeline {
     agent any
 
     tools {
-        nodejs "Node"  // Ensure you have configured NodeJS tool in Jenkins global settings
-    }
-environment {
-        DOCKER_IMAGE = "amitkasera2001/ci-cd-pipeline2"
+        nodejs "NodeJS"  // Ensure you have configured NodeJS tool in Jenkins global settings
     }
 
     stages {
-       
+   
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
@@ -21,15 +18,14 @@ environment {
                 sh 'echo "No tests available"'
             }
         }
- stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
-            withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-                   sh 'docker build  -t amitkasera2001/ci-cd-pipeline2 .'
-                   sh 'docker push amitkasera2001/ci-cd-pipeline2'
-               }
+                script {
+                    sh 'docker build -t amitkasera2001/ci-cd-pipeline2 .'
+                }
             }
         }
-
+     
         stage('Run') {
             steps {
                 sh 'node index.js'
